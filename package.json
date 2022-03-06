@@ -1,0 +1,44 @@
+{
+    "name": "react-hooks-redux-registration-login-example",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cornflourblue/react-hooks-redux-registration-login-example.git"
+    },
+    "license": "MIT",
+    "scripts": {
+        "build": "webpack --mode production",
+        "start": "webpack-dev-server --open"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.7.1",
+        "@emotion/styled": "^11.6.0",
+        "@material-ui/core": "^4.12.3",
+        "@material-ui/icons": "^4.11.2",
+        "@mui/icons-material": "^5.4.2",
+        "@mui/material": "^5.4.1",
+        "@types/react": "^17.0.39",
+        "history": "^4.10.1",
+        "material-ui-icons": "^1.0.0-beta.36",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-redux": "^7.2.0",
+        "react-router-dom": "5.2.0",
+        "redux": "^4.0.5",
+        "redux-logger": "^4.0.0",
+        "redux-thunk": "^2.3.0",
+        "style-loader": "^2.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.3",
+        "@babel/preset-env": "^7.4.3",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "css-loader": "^5.2.7",
+        "html-webpack-plugin": "^3.2.0",
+        "path": "^0.12.7",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0",
+        "webpack-dev-server": "^3.2.1"
+    }
+}
