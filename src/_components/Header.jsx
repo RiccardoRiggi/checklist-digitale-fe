@@ -22,6 +22,61 @@ export default function Header() {
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    //Gestione MENU Utenti
+    const [anchorElUtenti, setAnchorElUtenti] = React.useState(null);
+    const openUtenti = Boolean(anchorElUtenti)
+    const handleClickUtenti = (event) => {
+        setAnchorElUtenti(event.currentTarget);
+    };
+    const handleCloseUtenti = () => {
+        setAnchorElUtenti(null);
+    };
+
+    //Gestione MENU Veicoli
+    const [anchorElVeicoli, setAnchorElVeicoli] = React.useState(null);
+    const openVeicoli = Boolean(anchorElVeicoli)
+    const handleClickVeicoli = (event) => {
+        setAnchorElVeicoli(event.currentTarget);
+    };
+    const handleCloseVeicoli = () => {
+        setAnchorElVeicoli(null);
+    };
+
+    //Gestione MENU Template
+    const [anchorElTemplate, setAnchorElTemplate] = React.useState(null);
+    const openTemplate = Boolean(anchorElTemplate)
+    const handleClickTemplate = (event) => {
+        setAnchorElTemplate(event.currentTarget);
+    };
+    const handleCloseTemplate = () => {
+        setAnchorElTemplate(null);
+    };
+
+    //Gestione MENU Checklist
+    const [anchorElChecklist, setAnchorElChecklist] = React.useState(null);
+    const openChecklist = Boolean(anchorElChecklist)
+    const handleClickChecklist = (event) => {
+        setAnchorElChecklist(event.currentTarget);
+    };
+    const handleCloseChecklist = () => {
+        setAnchorElChecklist(null);
+    };
+
+
+
+
+
+
+
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -80,11 +135,108 @@ export default function Header() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
+
+
+                            <Button
+                                id="basic-button"
+                                aria-controls={openUtenti ? 'basic-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={openUtenti ? 'true' : undefined}
+                                onClick={handleClickUtenti}
+                                sx={{ color: 'black' }}
+                            >
+                                Utenti
+                            </Button>
+                            <Menu
+                                id="basic-menu"
+                                anchorEl={anchorElUtenti}
+                                open={openUtenti}
+                                onClose={handleCloseUtenti}
+                                MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                }}
+                                sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
+
+                            >
+                                <MenuItem onClick={handleCloseUtenti}><Link style={{ textDecoration: 'none' }} to="/aggiungi-utente"><span style={{ color: 'black' }}>Aggiungi Utente</span></Link></MenuItem>
+                                <MenuItem onClick={handleCloseUtenti}><Link style={{ textDecoration: 'none' }} to="/lista-utenti"><span style={{ color: 'black' }}>Lista Utenti</span></Link></MenuItem>
+                            </Menu>
+
+                            <Button
+                                id="basic-button"
+                                aria-controls={openVeicoli ? 'basic-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={openVeicoli ? 'true' : undefined}
+                                onClick={handleClickVeicoli}
+                                sx={{ color: 'black' }}
+                            >
+                                Veicoli
+                            </Button>
+                            <Menu
+                                id="basic-menu"
+                                anchorEl={anchorElVeicoli}
+                                open={openVeicoli}
+                                onClose={handleCloseVeicoli}
+                                MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                }}
+                                sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
+
+                            >
+                                <MenuItem onClick={handleCloseVeicoli}><Link style={{ textDecoration: 'none' }} to="/aggiungi-veicolo"><span style={{ color: 'black' }}>Aggiungi Veicolo</span></Link></MenuItem>
+                                <MenuItem onClick={handleCloseVeicoli}><Link style={{ textDecoration: 'none' }} to="/lista-veicoli"><span style={{ color: 'black' }}>Lista Veicoli</span></Link></MenuItem>
+                            </Menu>
+
+                            <Button
+                                id="basic-button"
+                                aria-controls={openTemplate ? 'basic-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={openTemplate ? 'true' : undefined}
+                                onClick={handleClickTemplate}
+                                sx={{ color: 'black' }}
+                            >
+                                Checklist Template
+                            </Button>
+                            <Menu
+                                id="basic-menu"
+                                anchorEl={anchorElTemplate}
+                                open={openTemplate}
+                                onClose={handleCloseTemplate}
+                                MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                }}
+                                sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
+
+                            >
+                                <MenuItem onClick={handleCloseTemplate}><Link style={{ textDecoration: 'none' }} to="/aggiungi-veicolo"><span style={{ color: 'black' }}>Aggiungi Template</span></Link></MenuItem>
+                                <MenuItem onClick={handleCloseTemplate}><Link style={{ textDecoration: 'none' }} to="/lista-veicoli"><span style={{ color: 'black' }}>Lista Template</span></Link></MenuItem>
+                            </Menu>
+
+                            <Button
+                                id="basic-button"
+                                aria-controls={openChecklist ? 'basic-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={openChecklist ? 'true' : undefined}
+                                onClick={handleClickChecklist}
+                                sx={{ color: 'black' }}
+                            >
+                                Checklist
+                            </Button>
+                            <Menu
+                                id="basic-menu"
+                                anchorEl={anchorElChecklist}
+                                open={openChecklist}
+                                onClose={handleCloseChecklist}
+                                MenuListProps={{
+                                    'aria-labelledby': 'basic-button',
+                                }}
+                                sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
+
+                            >
+                                <MenuItem onClick={handleCloseChecklist}><Link style={{ textDecoration: 'none' }} to="/aggiungi-veicolo"><span style={{ color: 'black' }}>Aggiungi Checklist</span></Link></MenuItem>
+                                <MenuItem onClick={handleCloseChecklist}><Link style={{ textDecoration: 'none' }} to="/lista-veicoli"><span style={{ color: 'black' }}>Lista Checklist</span></Link></MenuItem>
+                            </Menu>
+
                         </Menu>
                     </Box>
                     <Typography
@@ -96,39 +248,130 @@ export default function Header() {
                         <PlaylistAddCheckIcon fontSize='large' />Checklist Digitale
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
+                        <Button
+                            id="basic-button"
+                            aria-controls={openUtenti ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={openUtenti ? 'true' : undefined}
+                            onClick={handleClickUtenti}
+                            sx={{ color: 'white' }}
+                        >
+                            Utenti
+                        </Button>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorElUtenti}
+                            open={openUtenti}
+                            onClose={handleCloseUtenti}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button',
+                            }}
+                            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+
+                        >
+                            <MenuItem onClick={handleCloseUtenti}><Link style={{ textDecoration: 'none' }} to="/aggiungi-utente"><span style={{ color: 'black' }}>Aggiungi Utente</span></Link></MenuItem>
+                            <MenuItem onClick={handleCloseUtenti}><Link style={{ textDecoration: 'none' }} to="/lista-utenti"><span style={{ color: 'black' }}>Lista Utenti</span></Link></MenuItem>
+                        </Menu>
+
+                        <Button
+                            id="basic-button"
+                            aria-controls={openVeicoli ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={openVeicoli ? 'true' : undefined}
+                            onClick={handleClickVeicoli}
+                            sx={{ color: 'white' }}
+                        >
+                            Veicoli
+                        </Button>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorElVeicoli}
+                            open={openVeicoli}
+                            onClose={handleCloseVeicoli}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button',
+                            }}
+                            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+
+                        >
+                            <MenuItem onClick={handleCloseVeicoli}><Link style={{ textDecoration: 'none' }} to="/aggiungi-veicolo"><span style={{ color: 'black' }}>Aggiungi Veicolo</span></Link></MenuItem>
+                            <MenuItem onClick={handleCloseVeicoli}><Link style={{ textDecoration: 'none' }} to="/lista-veicoli"><span style={{ color: 'black' }}>Lista Veicoli</span></Link></MenuItem>
+                        </Menu>
+
+                        <Button
+                            id="basic-button"
+                            aria-controls={openTemplate ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={openTemplate ? 'true' : undefined}
+                            onClick={handleClickTemplate}
+                            sx={{ color: 'white' }}
+                        >
+                            Checklist Template
+                        </Button>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorElTemplate}
+                            open={openTemplate}
+                            onClose={handleCloseTemplate}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button',
+                            }}
+                            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+
+                        >
+                            <MenuItem onClick={handleCloseTemplate}><Link style={{ textDecoration: 'none' }} to="/aggiungi-veicolo"><span style={{ color: 'black' }}>Aggiungi Template</span></Link></MenuItem>
+                            <MenuItem onClick={handleCloseTemplate}><Link style={{ textDecoration: 'none' }} to="/lista-veicoli"><span style={{ color: 'black' }}>Lista Template</span></Link></MenuItem>
+                        </Menu>
+
+                        <Button
+                            id="basic-button"
+                            aria-controls={openChecklist ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={openChecklist ? 'true' : undefined}
+                            onClick={handleClickChecklist}
+                            sx={{ color: 'white' }}
+                        >
+                            Checklist
+                        </Button>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorElChecklist}
+                            open={openChecklist}
+                            onClose={handleCloseChecklist}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button',
+                            }}
+                            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+
+                        >
+                            <MenuItem onClick={handleCloseChecklist}><Link style={{ textDecoration: 'none' }} to="/aggiungi-veicolo"><span style={{ color: 'black' }}>Aggiungi Checklist</span></Link></MenuItem>
+                            <MenuItem onClick={handleCloseChecklist}><Link style={{ textDecoration: 'none' }} to="/lista-veicoli"><span style={{ color: 'black' }}>Lista Checklist</span></Link></MenuItem>
+                        </Menu>
+
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                    <Typography
-                    onClick={handleOpenUserMenu}
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'none', md: 'inline' }, cursor: 'pointer' }}
+                        <Typography
+                            onClick={handleOpenUserMenu}
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{ flexGrow: 1, display: { xs: 'none', md: 'inline' }, cursor: 'pointer' }}
 
-                    >
-                        Bentornato {JSON.parse(localStorage.getItem("user")).nome}!
-                    </Typography>
-                    <Typography
-                    onClick={handleOpenUserMenu}
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, cursor: 'pointer' }}
+                        >
+                            Bentornato {JSON.parse(localStorage.getItem("user")).nome}!
+                        </Typography>
+                        <Typography
+                            onClick={handleOpenUserMenu}
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, cursor: 'pointer' }}
 
-                    >
-                        {JSON.parse(localStorage.getItem("user")).nome.toString().charAt(0)}
-                    </Typography>
-                        
+                        >
+                            {JSON.parse(localStorage.getItem("user")).nome.toString().charAt(0)}
+                        </Typography>
+
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
@@ -157,7 +400,7 @@ export default function Header() {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 
 

@@ -32,7 +32,7 @@ function App() {
                     <Router history={history}>
                         <Switch>
                             <PrivateRoute exact path="/" component={HomePage} />
-                            <PrivateRoute exact path="/utenti" component={ListaUtentiPage} />
+                            <PrivateRoute exact path="/lista-utenti" component={ListaUtentiPage} />
                             <Route path="/login" component={LoginPage} />
                             <Redirect from="*" to="/" />
                         </Switch>

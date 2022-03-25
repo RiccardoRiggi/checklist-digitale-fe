@@ -58,7 +58,7 @@ function LoginPage() {
     }
 
     return (<>
-        <Grid container spacing={0} container
+        <Grid container spacing={0}
             direction="column"
             alignItems="center"
             justifyContent="center"
