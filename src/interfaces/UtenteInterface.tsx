@@ -1,9 +1,10 @@
 export interface UtenteInterface {
-    identificativo: number,
+    identificativo?: number,
 	nome: string,
 	cognome: string,
-	dataDiNascita: Date,
+	dataDiNascita?: Date,
 	email: string,
+	password: string,
 	userInsert: string,
 	dateInsert: Date,
 	userUpdate: string,

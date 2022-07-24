@@ -1,38 +1,61 @@
 import { async } from 'q';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { fetchMantieniMessaggiAction, fetchTestoDangerAction, fetchTestoSuccessAction, fetchTestoWarnAction } from '../modules/feedback/actions';
+import { fetchUtenteAction } from '../modules/utenteLoggato/actions';
 import utenteService from '../services/UtenteService';
 import Footer from './Footer';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
-export default function Layout({ children, testoSuccess, testoWarn, testoDanger }: any) {
+export default function Layout({ children }: any) {
+    const dispatch = useDispatch();
+    const utenteLoggato = useSelector((state: any) => state.utenteLoggato);
+    const feedback = useSelector((state: any) => state.feedback); 
+
+    const [eseguitoControlloAutenticazione, setEseguitoControlloAutenticazione] = React.useState(false);
+
 
     document.getElementsByTagName("body")[0].classList.remove("bg-gradient-danger");
     let navigate = useNavigate();
 
     const logout = () => {
         sessionStorage.clear();
+        localStorage.clear();
         document.getElementsByTagName("div")[document.getElementsByTagName("div").length-1].remove();
         document.getElementsByTagName("body")[0].classList.remove("modal-open");
         navigate("/login");
     }
 
     const verificaAutenticazione = async () => {
-        await utenteService.isAutenticato().then(response => {
-            sessionStorage.setItem("identificativo", response.data.identificativo.toString());
-            sessionStorage.setItem("nome", response.data.nome);
-            sessionStorage.setItem("cognome", response.data.cognome);
-            sessionStorage.setItem("dataDiNascita", response.data.dataDiNascita);
-            sessionStorage.setItem("email", response.data.email);
-            sessionStorage.setItem("ruolo", response.data.tRuoloCodice);
+        await utenteService.isAutenticato(sessionStorage.getItem("token")).then(response => {
+            dispatch(fetchUtenteAction(response.data));
         }).catch(e => {
             console.error(e);
+            sessionStorage.clear();
+            localStorage.clear();
+            dispatch(fetchTestoDangerAction("Sessione scaduta!"));
             navigate("/login");
         });
     }
 
-    verificaAutenticazione();
+
+    useEffect(() => {
+        if(!eseguitoControlloAutenticazione){
+            if(feedback.mantieniMessaggi){
+                dispatch(fetchMantieniMessaggiAction(false));
+            }else{
+                dispatch(fetchTestoDangerAction());
+                dispatch(fetchTestoWarnAction());
+                dispatch(fetchTestoSuccessAction());
+            }            
+            verificaAutenticazione();
+            setEseguitoControlloAutenticazione(true);
+            
+        }
+      });
+
 
     return (
         <>
@@ -47,8 +70,11 @@ export default function Layout({ children, testoSuccess, testoWarn, testoDanger 
                         <Header />
 
                         <div className="container-fluid">
-                            {testoDanger && <div className="alert alert-danger" role="alert">{testoDanger}</div>}
-                            {children}
+                            {feedback.testoDanger && <div className="alert alert-danger" role="alert">{feedback.testoDanger}</div>}
+                            {feedback.testoWarn && <div className="alert alert-warn" role="alert">{feedback.testoWarn}</div>}
+                            {feedback.testoSuccess && <div className="alert alert-success" role="alert">{feedback.testoSuccess}</div>}
+                            {!feedback.isLoading && children}
+                            {feedback.isLoading && <div className='text-center'><i className="fas fa-spinner fa-spin fa-3x text-danger"></i></div>}
                         </div>
 
                     </div>

@@ -10,7 +10,6 @@ import './App.css';
 import PrivateRoute from './components/PrivateRoute';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import AggiungiUtentePage from './pages/utenti/AggiungiUtentePage';
 import ListaUtentiPage from './pages/utenti/ListaUtentiPage';
 import SchedaUtentePage from './pages/utenti/SchedaUtentePage';
 
@@ -41,7 +40,7 @@ function App() {
             }
           />
           <Route
-            path="utenti/:id"
+            path="scheda-utente/:id"
             element={
               <PrivateRoute>
                 <SchedaUtentePage />
@@ -49,10 +48,10 @@ function App() {
             }
           />
           <Route
-            path="aggiungi-utente"
+            path="scheda-utente"
             element={
               <PrivateRoute>
-                <AggiungiUtentePage />
+                <SchedaUtentePage />
               </PrivateRoute>
             }
           />

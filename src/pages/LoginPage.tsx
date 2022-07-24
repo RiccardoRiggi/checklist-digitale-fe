@@ -1,18 +1,23 @@
 import { async } from 'q';
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LoginInterface } from '../interfaces/LoginInterface';
+import { fetchTestoDangerAction, fetchTestoSuccessAction } from '../modules/feedback/actions';
+import { feedbackReducer } from '../modules/feedback/reducer';
+import { fetchUtenteAction } from '../modules/utenteLoggato/actions';
 import utenteService from '../services/UtenteService';
 
 
 
 export default function LoginPage() {
+    const dispatch = useDispatch();
+    const feedback = useSelector((state: any) => state.feedback); 
 
-    const [isLoading, setLoading] = React.useState(false);
+
     const [isSubmitting, setSubmitting] = React.useState(false);
     const [email, setEmail] = React.useState("info@riccardoriggi.it");
     const [password, setPassword] = React.useState("123456");
-    const [testoDanger, setTestoDanger] = React.useState("");
     let navigate = useNavigate();
     document.getElementsByTagName("body")[0].classList.add("bg-gradient-danger");
 
@@ -26,18 +31,13 @@ export default function LoginPage() {
         }
 
         await utenteService.eseguiAutenticazione(utente).then(response => {
-            console.log(response.data);
+            dispatch(fetchUtenteAction(response.data));
             sessionStorage.setItem("token", response.data.token);
-            sessionStorage.setItem("identificativo", response.data.identificativo.toString());
-            sessionStorage.setItem("nome", response.data.nome);
-            sessionStorage.setItem("cognome", response.data.cognome);
-            sessionStorage.setItem("dataDiNascita", response.data.dataDiNascita);
-            sessionStorage.setItem("email", response.data.email);
-            sessionStorage.setItem("ruolo", response.data.tRuoloCodice);
-            window.location.replace("/");
+            setTimeout(() => { navigate("/"); }, 500);
         }).catch(e => {
             console.error(e);
-            setTestoDanger("Credenziali non corrette!");
+            dispatch(fetchTestoDangerAction("Credenziali non corrette!"));
+            setSubmitting(false);
         });
     }
 
@@ -58,7 +58,10 @@ export default function LoginPage() {
                                     <div className="p-5">
                                         <div className="text-center">
                                             <h1 className="h4 text-gray-900 mb-4"><i className="fas fa-clipboard-list pr-3 text-primary"></i>Checklist Digitale</h1>
-                                            {testoDanger && <div className="alert alert-danger" role="alert">{testoDanger}</div>}
+                                           { feedback.testoDanger && <div className="alert alert-danger fade show" role="alert">
+                                                {feedback.testoDanger}
+                                                
+                                            </div> }
                                         </div>
                                         <form className="user">
                                             <div className="form-group">
@@ -71,7 +74,7 @@ export default function LoginPage() {
                                                     placeholder="Password" />
                                             </div>
 
-                                            <span className="btn btn-primary btn-user btn-block" onClick={submitForm}>Login</span>
+                                            <span className="btn btn-primary btn-user btn-block" onClick={submitForm}>{!isSubmitting && <span>Login</span>} {isSubmitting && <i className="fas fa-spinner fa-spin"></i>}</span>
 
 
                                         </form>

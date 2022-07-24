@@ -50,7 +50,7 @@ export default function Sidebar() {
                             <div id="collapseUtenti" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Opzioni disponibili:</h6>
-                                    <Link className="collapse-item" to="/aggiungi-utente">Aggiungi utente</Link>
+                                    <Link className="collapse-item" to="/scheda-utente">Aggiungi utente</Link>
                                     <Link className="collapse-item" to="/utenti">Lista utenti</Link>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@ export default function Sidebar() {
                             <div id="collapseVeicoli" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Opzioni disponibili:</h6>
-                                    <Link className="collapse-item" to="/aggiungi-veicolo">Aggiungi veicolo</Link>
+                                    <Link className="collapse-item" to="/scheda-veicolo">Aggiungi veicolo</Link>
                                     <Link className="collapse-item" to="/veicoli">Lista veicoli</Link>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@ export default function Sidebar() {
                             <div id="collapseTemplate" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Opzioni disponibili:</h6>
-                                    <Link className="collapse-item" to="/aggiungi-template-checklist">Aggiungi template</Link>
+                                    <Link className="collapse-item" to="/scheda-template-checklist">Aggiungi template</Link>
                                     <Link className="collapse-item" to="/templates">Lista template</Link>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ export default function Sidebar() {
                             <div id="collapseChecklist" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Opzioni disponibili:</h6>
-                                    <Link className="collapse-item" to="/aggiungi-checklist">Aggiungi checklist</Link>
+                                    <Link className="collapse-item" to="/scheda-checklist">Aggiungi checklist</Link>
                                     <Link className="collapse-item" to="/checklists">Lista checklist</Link>
                                 </div>
                             </div>
