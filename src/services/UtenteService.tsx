@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http, { getConfigHttpRequestForDelete } from "../http-common";
 import { getConfigHttpRequest } from "../http-common";
 import { LoginInterface } from "../interfaces/LoginInterface";
 import { UtenteInterface } from "../interfaces/UtenteInterface";
@@ -31,6 +31,10 @@ const modificaUtente = (token: any, utente: any, idUtente: any) => {
     return http.put(root + "/"+idUtente,utente,getConfigHttpRequest(token));
 }
 
+const eliminaUtente = (token: any, utente: any, idUtente: any) => {
+    return http.delete(root + "/"+idUtente,getConfigHttpRequestForDelete(token,utente));
+}
+
 
 const utenteService = {
     eseguiAutenticazione,
@@ -38,7 +42,8 @@ const utenteService = {
     listaUtenti,
     getUtente,
     inserisciUtente,
-    modificaUtente
+    modificaUtente,
+    eliminaUtente
 
 };
 export default utenteService;

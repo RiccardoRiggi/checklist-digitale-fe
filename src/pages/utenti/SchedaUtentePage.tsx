@@ -17,7 +17,7 @@ export default function SchedaUtentePage() {
     const utenteLoggato = useSelector((state: any) => state.utenteLoggato.utente);
     const [utente, setUtente] = React.useState<UtenteInterface>();
     const [dataDiNascita, setDataDiNascita] = React.useState(new Date());
-    const [ruolo, setRuolo] = React.useState("U");
+    const [ruolo, setRuolo] = React.useState(params.id != null ? "" : "U");
 
     const [formErrors, setFormErrors] = React.useState(Object);
     const [isInserimento, setIsInserimento] = React.useState(params.id == null);
@@ -32,6 +32,9 @@ export default function SchedaUtentePage() {
             setUtente(response.data);
             setDataDiNascita(new Date(response.data.dataDiNascita));
             setRuolo(response.data.tRuoloCodice);
+            const select: any = document.getElementById('comboRuolo');
+            if (select != null)
+                select.value = response.data.tRuoloCodice;
             dispatch(fetchIsLoadingAction(false));
         }).catch(e => {
             console.error(e);
@@ -52,24 +55,26 @@ export default function SchedaUtentePage() {
             oggettoUtenteOggeto = JSON.parse(oggettoUtenteStringa);
         }
         oggettoUtenteOggeto[inputName] = inputValue;
+
         setUtente(oggettoUtenteOggeto as UtenteInterface);
     }
 
     const submitForm = async () => {
         let utenteTmp: any = {};
-        if(utente!=undefined){
+        if (utente != undefined) {
             utenteTmp = JSON.parse(JSON.stringify(utente));
-        }        
+        }
+
         utenteTmp.dataDiNascita = dataDiNascita;
         utenteTmp.tRuoloCodice = ruolo;
-        let formsErrorTmp = SchedaUtenteValidator(utente!);
+        let formsErrorTmp = SchedaUtenteValidator(utenteTmp!, params.id);
         setFormErrors(formsErrorTmp);
         if (Object.keys(formsErrorTmp).length == 0) {
             if (isInserimento) {
                 utenteTmp.userInsert = utenteLoggato.nome + " " + utenteLoggato.cognome;
                 setUtente(utenteTmp as UtenteInterface);
                 dispatch(fetchIsLoadingAction(true));
-                await utenteService.inserisciUtente(sessionStorage.getItem("token"), utente).then(response => {
+                await utenteService.inserisciUtente(sessionStorage.getItem("token"), utenteTmp).then(response => {
                     dispatch(fetchIsLoadingAction(false));
                     dispatch(fetchTestoSuccessAction("Utente registrato con successo!"));
                     dispatch(fetchMantieniMessaggiAction(true));
@@ -81,12 +86,13 @@ export default function SchedaUtentePage() {
                 });
             } else {
                 utenteTmp.userUpdate = utenteLoggato.nome + " " + utenteLoggato.cognome;
-                utenteTmp.identificativo=undefined;
-                setUtente(utenteTmp  as UtenteInterface);
+                utenteTmp.identificativo = undefined;
+                setUtente(utenteTmp as UtenteInterface);
                 dispatch(fetchIsLoadingAction(true));
                 await utenteService.modificaUtente(sessionStorage.getItem("token"), utenteTmp, params.id).then(response => {
                     dispatch(fetchIsLoadingAction(false));
                     dispatch(fetchTestoSuccessAction("Utente aggiornato con successo!"));
+                    setUtente(response.data);
                 }).catch(e => {
                     console.error(e);
                     console.log(JSON.stringify(utente));
@@ -167,7 +173,7 @@ export default function SchedaUtentePage() {
                         <div className='col-4'>
                             <div className="form-group">
                                 <label>Ruolo</label>
-                                <select className="form-control" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setRuolo(event.target.value)}>
+                                <select id='comboRuolo' className="form-control" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setRuolo(event.target.value)}>
                                     <option value={"U"}>Utente</option>
                                     <option value={"A"}>Amministratore</option>
                                 </select>

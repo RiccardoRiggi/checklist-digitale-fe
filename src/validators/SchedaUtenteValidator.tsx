@@ -1,6 +1,6 @@
 import { UtenteInterface } from "../interfaces/UtenteInterface";
 
-export default function SchedaUtenteValidator(utente: UtenteInterface) {
+export default function SchedaUtenteValidator(utente: UtenteInterface, identificativo: any) {
     let errors: any = {};
     console.error(utente);
     
@@ -22,9 +22,9 @@ export default function SchedaUtenteValidator(utente: UtenteInterface) {
         errors.email = "L'email è richiesta";
     }
 
-    if ((utente == undefined || utente.password == null || utente.password == "" ) && utente.identificativo == null) {
+    if ((utente == undefined || utente.password == null || utente.password == "" ) && identificativo == null) {
         errors.password = "La password è richiesta";
-    }else if(utente.identificativo == null && utente.password.length<6 ){
+    }else if(identificativo == null && utente.password.length<6 ){
         errors.password = "La password deve essere lunga almeno 6 caratteri";
     }
 

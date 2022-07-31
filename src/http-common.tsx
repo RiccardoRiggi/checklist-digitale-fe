@@ -17,3 +17,14 @@ export function getConfigHttpRequest(token: any){
         }
     };
 }
+
+export function getConfigHttpRequestForDelete(token: any,data:any){
+    return {
+        baseURL: "http://localhost:4000",
+        headers: {
+            "Content-type": "application/json",
+            'Authorization': 'Bearer '+ token
+        },
+        data: data
+    };
+}

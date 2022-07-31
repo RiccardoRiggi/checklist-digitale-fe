@@ -12,6 +12,8 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ListaUtentiPage from './pages/utenti/ListaUtentiPage';
 import SchedaUtentePage from './pages/utenti/SchedaUtentePage';
+import ListaVeicoliPage from './pages/veicoli/ListaVeicoliPage';
+import SchedaVeicoloPage from './pages/veicoli/SchedaVeicoloPage';
 
 
 
@@ -52,6 +54,32 @@ function App() {
             element={
               <PrivateRoute>
                 <SchedaUtentePage />
+              </PrivateRoute>
+            }
+          />
+
+<Route
+            path="veicoli"
+            element={
+              <PrivateRoute>
+                <ListaVeicoliPage />
+              </PrivateRoute>
+            }
+          />
+
+<Route
+            path="scheda-veicolo/:id"
+            element={
+              <PrivateRoute>
+                <SchedaVeicoloPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="scheda-veicolo"
+            element={
+              <PrivateRoute>
+                <SchedaVeicoloPage />
               </PrivateRoute>
             }
           />
