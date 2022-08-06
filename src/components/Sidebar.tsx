@@ -80,7 +80,7 @@ export default function Sidebar() {
                             <div id="collapseTemplate" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Opzioni disponibili:</h6>
-                                    <Link className="collapse-item" to="/scheda-template-checklist">Aggiungi template</Link>
+                                    <Link className="collapse-item" to="/scheda-template">Aggiungi template</Link>
                                     <Link className="collapse-item" to="/templates">Lista template</Link>
                                 </div>
                             </div>

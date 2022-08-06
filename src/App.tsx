@@ -10,6 +10,8 @@ import './App.css';
 import PrivateRoute from './components/PrivateRoute';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import ListaTemplatesPage from './pages/templates/ListaTemplatesPage';
+import SchedaTemplatePage from './pages/templates/SchedaTemplatePage';
 import ListaUtentiPage from './pages/utenti/ListaUtentiPage';
 import SchedaUtentePage from './pages/utenti/SchedaUtentePage';
 import ListaVeicoliPage from './pages/veicoli/ListaVeicoliPage';
@@ -80,6 +82,32 @@ function App() {
             element={
               <PrivateRoute>
                 <SchedaVeicoloPage />
+              </PrivateRoute>
+            }
+          />
+
+<Route
+            path="templates"
+            element={
+              <PrivateRoute>
+                <ListaTemplatesPage />
+              </PrivateRoute>
+            }
+          />
+
+<Route
+            path="scheda-template/:id"
+            element={
+              <PrivateRoute>
+                <SchedaTemplatePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="scheda-template"
+            element={
+              <PrivateRoute>
+                <SchedaTemplatePage />
               </PrivateRoute>
             }
           />
