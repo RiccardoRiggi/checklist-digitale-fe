@@ -1,5 +1,3 @@
-import { VeicoloInterface } from "./VeicoloInterface";
-
 export interface RigaTemplateInterface {
     identificativo?: number,
 	nome: string,

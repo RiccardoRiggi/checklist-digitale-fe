@@ -1,11 +1,9 @@
-import React, { ChangeEventHandler, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import { fetchIsLoadingAction, fetchMantieniMessaggiAction, fetchTestoDangerAction, fetchTestoSuccessAction } from '../../modules/feedback/actions';
-import { VeicoloInterface } from '../../interfaces/VeicoloInterface';
 import veicoloService from '../../services/VeicoloService';
-import SchedaVeicoloValidator from '../../validators/SchedaVeicoloValidator';
 import { TemplateInterface } from '../../interfaces/TemplateInterface';
 import templateService from '../../services/TemplateService';
 
@@ -267,14 +265,14 @@ export default function SchedaTemplatePage() {
                     <div className='row'>
                         <div className='col-6'>
                             <div className="form-group">
-                                <label>Nome</label>
+                                <label>Nome<span className='text-danger'>*</span></label>
                                 <input type="text" className="form-control" placeholder="" name="nome" value={template?.nome} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
                                 <small className="form-text text-danger">{formErrors.nome}</small>
                             </div>
                         </div>
                         <div className='col-6'>
                             <div className="form-group">
-                                <label>Veicolo</label>
+                                <label>Veicolo<span className='text-danger'>*</span></label>
                                 <Select
                                     name="form-field-name"
                                     value={veicolo}
@@ -308,21 +306,21 @@ export default function SchedaTemplatePage() {
                     <div className='row'>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Nome</label>
+                                <label>Nome<span className='text-danger'>*</span></label>
                                 <input type="text" className="form-control" placeholder="" name="nome" value={templateRiga?.nome} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChangeRiga(event)} />
                                 <small className="form-text text-danger">{formErrorsRiga.nome}</small>
                             </div>
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Descrizione</label>
+                                <label>Descrizione<span className='text-danger'>*</span></label>
                                 <input type="text" className="form-control" placeholder="" name="descrizione" value={templateRiga?.descrizione} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChangeRiga(event)} />
                                 <small className="form-text text-danger">{formErrorsRiga.descrizione}</small>
                             </div>
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Quantità</label>
+                                <label>Quantità<span className='text-danger'>*</span></label>
                                 <input type="number" className="form-control" placeholder="" name="quantita" value={templateRiga?.quantita} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChangeRiga(event)} />
                                 <small className="form-text text-danger">{formErrorsRiga.quantita}</small>
                             </div>

@@ -1,7 +1,6 @@
 import http, { getConfigHttpRequestForDelete } from "../http-common";
 import { getConfigHttpRequest } from "../http-common";
 import { LoginInterface } from "../interfaces/LoginInterface";
-import { UtenteInterface } from "../interfaces/UtenteInterface";
 
 let root = "/utenti";
 

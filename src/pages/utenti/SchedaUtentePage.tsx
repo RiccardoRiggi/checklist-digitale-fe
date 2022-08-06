@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/Layout';
@@ -130,21 +130,21 @@ export default function SchedaUtentePage() {
                     <div className='row'>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Nome</label>
-                                <input type="text" className="form-control" placeholder="" name="nome" value={utente?.nome} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
+                                <label>Nome<span className='text-danger'>*</span></label>
+                                <input type="text" className="form-control " placeholder="" name="nome" value={utente?.nome} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
                                 <small className="form-text text-danger">{formErrors.nome}</small>
                             </div>
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Cognome</label>
+                                <label>Cognome<span className='text-danger'>*</span></label>
                                 <input type="text" className="form-control" placeholder="" name="cognome" value={utente?.cognome} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
                                 <small className="form-text text-danger">{formErrors.cognome}</small>
                             </div>
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Data di nascita</label>
+                                <label>Data di nascita<span className='text-danger'>*</span></label>
                                 <DatePicker
                                     className='form-control'
                                     locale={it}
@@ -157,14 +157,14 @@ export default function SchedaUtentePage() {
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Email</label>
+                                <label>Email<span className='text-danger'>*</span></label>
                                 <input type="email" className="form-control" placeholder="" name="email" value={utente?.email} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
                                 <small className="form-text text-danger">{formErrors.email}</small>
                             </div>
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Password</label>
+                                <label>Password<span className='text-danger'>*</span></label>
                                 <input type="password" className="form-control" placeholder="" name="password" value={utente?.password} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
                                 <small className="form-text">La password deve essere lunga almeno sei caratteri</small>
                                 <small className="form-text text-danger">{formErrors.password}</small>
@@ -172,7 +172,7 @@ export default function SchedaUtentePage() {
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Ruolo</label>
+                                <label>Ruolo<span className='text-danger'>*</span></label>
                                 <select id='comboRuolo' className="form-control" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setRuolo(event.target.value)}>
                                     <option value={"U"}>Utente</option>
                                     <option value={"A"}>Amministratore</option>

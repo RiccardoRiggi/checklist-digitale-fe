@@ -1,10 +1,8 @@
-import { async } from 'q';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LoginInterface } from '../interfaces/LoginInterface';
-import { fetchTestoDangerAction, fetchTestoSuccessAction } from '../modules/feedback/actions';
-import { feedbackReducer } from '../modules/feedback/reducer';
+import { fetchTestoDangerAction } from '../modules/feedback/actions';
 import { fetchUtenteAction } from '../modules/utenteLoggato/actions';
 import utenteService from '../services/UtenteService';
 

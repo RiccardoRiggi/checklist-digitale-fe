@@ -1,17 +1,11 @@
-import React, { ChangeEventHandler, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/Layout';
-import { UtenteInterface } from '../../interfaces/UtenteInterface';
 import { fetchIsLoadingAction, fetchMantieniMessaggiAction, fetchTestoDangerAction, fetchTestoSuccessAction } from '../../modules/feedback/actions';
-import utenteService from '../../services/UtenteService';
-import SchedaUtenteValidator from '../../validators/SchedaUtenteValidator';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import it from 'date-fns/locale/it';
 import { VeicoloInterface } from '../../interfaces/VeicoloInterface';
 import veicoloService from '../../services/VeicoloService';
 import SchedaVeicoloValidator from '../../validators/SchedaVeicoloValidator';
-registerLocale('it', it)
 
 
 export default function SchedaVeicoloPage() {
@@ -129,21 +123,21 @@ export default function SchedaVeicoloPage() {
                     <div className='row'>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Nome</label>
+                                <label>Nome<span className='text-danger'>*</span></label>
                                 <input type="text" className="form-control" placeholder="" name="nome" value={veicolo?.nome} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
                                 <small className="form-text text-danger">{formErrors.nome}</small>
                             </div>
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Selettiva</label>
+                                <label>Selettiva<span className='text-danger'>*</span></label>
                                 <input type="text" className="form-control" placeholder="" name="selettiva" value={veicolo?.selettiva} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
                                 <small className="form-text text-danger">{formErrors.selettiva}</small>
                             </div>
                         </div>
                         <div className='col-4'>
                             <div className="form-group">
-                                <label>Tipo veicolo</label>
+                                <label>Tipo veicolo<span className='text-danger'>*</span></label>
                                 <select id='comboTipoVeicolo' className="form-control" onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setTipoVeicolo(event.target.value)}>
                                     <option value={"A"}>Ambulanza</option>
                                     <option value={"M"}>Automedica</option>

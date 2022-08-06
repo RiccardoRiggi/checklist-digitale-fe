@@ -58,7 +58,7 @@ export default function Header() {
                         <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i className="fas fa-user-circle text-danger pr-3"></i>
-                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{utenteLoggato.nome + " " + utenteLoggato.cognome}</span>
+                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{utenteLoggato?.nome + " " + utenteLoggato?.cognome}</span>
 
                         </a>
                         <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in"

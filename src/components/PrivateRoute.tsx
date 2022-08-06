@@ -1,10 +1,6 @@
-import { async } from 'q';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { boolean } from 'yargs';
-import { UtenteInterface } from '../interfaces/UtenteInterface';
-import utenteService from '../services/UtenteService';
+import { Navigate } from 'react-router-dom';
 
 export default function PrivateRoute({ children }: any) {
     const utenteLoggato = useSelector((state: any) => state.utenteLoggato);

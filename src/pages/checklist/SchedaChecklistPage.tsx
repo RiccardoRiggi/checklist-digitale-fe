@@ -1,18 +1,11 @@
-import React, { ChangeEventHandler, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import { fetchIsLoadingAction, fetchMantieniMessaggiAction, fetchTestoDangerAction, fetchTestoSuccessAction } from '../../modules/feedback/actions';
-import { VeicoloInterface } from '../../interfaces/VeicoloInterface';
-import veicoloService from '../../services/VeicoloService';
-import SchedaVeicoloValidator from '../../validators/SchedaVeicoloValidator';
-import { TemplateInterface } from '../../interfaces/TemplateInterface';
 import templateService from '../../services/TemplateService';
 
 import Select from 'react-select'
-import SchedaTemplateValidator from '../../validators/SchedaTemplateValidator';
-import { RigaTemplateInterface } from '../../interfaces/RigaTemplateInterface';
-import SchedaRigaTemplateValidator from '../../validators/SchedaRigaTemplateValidator';
 import { ChecklistInterface } from '../../interfaces/ChecklistInterface';
 import checklistService from '../../services/ChecklistService';
 import { RigaChecklistInterface } from '../../interfaces/RigaChecklistInterface';
@@ -30,10 +23,6 @@ export default function SchedaChecklistPage() {
     const utenteLoggato = useSelector((state: any) => state.utenteLoggato.utente);
     const [checklist, setChecklist] = React.useState<ChecklistInterface>();
 
-    const [templateRiga, setTemplateRiga] = React.useState<RigaTemplateInterface>();
-
-
-
     const [template, setTemplate] = React.useState({
         selectedOption: '',
         clearable: true,
@@ -44,7 +33,6 @@ export default function SchedaChecklistPage() {
     const [listaTemplate, setListaTemplate] = React.useState([]);
 
     const [formErrors, setFormErrors] = React.useState(Object);
-    const [formErrorsRiga, setFormErrorsRiga] = React.useState(Object);
     const [isInserimento, setIsInserimento] = React.useState(params.id == null);
 
     const [confermabile, setConfermabile] = React.useState(false);
@@ -276,7 +264,7 @@ export default function SchedaChecklistPage() {
                     <div className='row'>
                         <div className={isInserimento ? 'col-4' : 'col-6'}>
                             <div className="form-group">
-                                <label>Nome</label>
+                                <label>Nome<span className='text-danger'>*</span></label>
                                 <input type="text" className={"form-control"} disabled={checklist?.isCompletato} placeholder="" name="nome" value={checklist?.nome} onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleOnChange(event)} />
                                 <small className="form-text text-danger">{formErrors.nome}</small>
                             </div>
@@ -290,7 +278,7 @@ export default function SchedaChecklistPage() {
                         </div>
                         {isInserimento && <div className='col-4'>
                             <div className="form-group">
-                                <label>Template</label>
+                                <label>Template<span className='text-danger'>*</span></label>
                                 <Select
                                     name="form-field-name"
                                     value={template}

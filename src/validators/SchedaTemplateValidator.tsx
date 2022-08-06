@@ -2,7 +2,6 @@ import { TemplateInterface } from "../interfaces/TemplateInterface";
 
 export default function SchedaTemplateValidator(template: TemplateInterface, identificativo: any) {
     let errors: any = {};
-    console.error(template);
     
     if (template == undefined || template.nome == undefined || template.nome == "") {
         errors.nome = "Il nome è richiesto";
@@ -11,8 +10,6 @@ export default function SchedaTemplateValidator(template: TemplateInterface, ide
     if (template.veicoloIdentificativo == undefined || template.veicoloIdentificativo == null) {
         errors.veicoloIdentificativo = "La selettiva è richiesta";
     }
-
-    console.error(errors);
 
     return errors;
 } 

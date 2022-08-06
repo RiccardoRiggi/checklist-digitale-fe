@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import { TemplateInterface } from '../../interfaces/TemplateInterface';
-import { UtenteInterface } from '../../interfaces/UtenteInterface';
 import { VeicoloInterface } from '../../interfaces/VeicoloInterface';
 import { fetchIsLoadingAction, fetchTestoDangerAction, fetchTestoSuccessAction } from '../../modules/feedback/actions';
 import templateService from '../../services/TemplateService';
-import utenteService from '../../services/UtenteService';
 import veicoloService from '../../services/VeicoloService';
 
 export default function ListaTemplatesPage() {

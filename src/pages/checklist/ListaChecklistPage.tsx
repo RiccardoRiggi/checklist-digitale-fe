@@ -4,12 +4,8 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import { getData } from '../../DateUtil';
 import { ChecklistInterface } from '../../interfaces/ChecklistInterface';
-import { UtenteInterface } from '../../interfaces/UtenteInterface';
-import { VeicoloInterface } from '../../interfaces/VeicoloInterface';
 import { fetchIsLoadingAction, fetchTestoDangerAction, fetchTestoSuccessAction } from '../../modules/feedback/actions';
 import checklistService from '../../services/ChecklistService';
-import utenteService from '../../services/UtenteService';
-import veicoloService from '../../services/VeicoloService';
 
 export default function ListaCkecklistPage() {
     const dispatch = useDispatch();

@@ -2,7 +2,6 @@ import { UtenteInterface } from "../interfaces/UtenteInterface";
 
 export default function SchedaUtenteValidator(utente: UtenteInterface, identificativo: any) {
     let errors: any = {};
-    console.error(utente);
     
     if (utente == undefined || utente.nome == undefined || utente.nome == "") {
         errors.nome = "Il nome è richiesto";

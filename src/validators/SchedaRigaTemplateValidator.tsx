@@ -1,9 +1,7 @@
 import { RigaTemplateInterface } from "../interfaces/RigaTemplateInterface";
-import { TemplateInterface } from "../interfaces/TemplateInterface";
 
 export default function SchedaRigaTemplateValidator(riga: RigaTemplateInterface) {
     let errors: any = {};
-    console.error(riga);
     
     if (riga == undefined || riga.nome == undefined || riga.nome == "") {
         errors.nome = "Il nome è richiesto";
@@ -16,8 +14,6 @@ export default function SchedaRigaTemplateValidator(riga: RigaTemplateInterface)
     if (riga.quantita == undefined || riga.quantita == null) {
         errors.quantita = "La quantità è richiesta";
     }
-
-    console.error(errors);
 
     return errors;
 } 

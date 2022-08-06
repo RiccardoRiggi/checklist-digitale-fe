@@ -2,10 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
-import { UtenteInterface } from '../../interfaces/UtenteInterface';
 import { VeicoloInterface } from '../../interfaces/VeicoloInterface';
 import { fetchIsLoadingAction, fetchTestoDangerAction, fetchTestoSuccessAction } from '../../modules/feedback/actions';
-import utenteService from '../../services/UtenteService';
 import veicoloService from '../../services/VeicoloService';
 
 export default function ListaVeicoliPage() {
