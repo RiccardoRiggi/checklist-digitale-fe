@@ -126,7 +126,7 @@ export default function ListaTemplatesPage() {
                             </button>
                         </div>
                         <div className="modal-body">
-                            Sei sicuro di voler eliminare il template {templateSelezionato?.nome} relativo al veicoli {templateSelezionato?.veicolo?.selettiva} - {templateSelezionato?.veicolo?.nome}? L'operazione è irreversibile!
+                            Sei sicuro di voler eliminare il template {templateSelezionato?.nome} relativo al veicolo {templateSelezionato?.veicolo?.selettiva} - {templateSelezionato?.veicolo?.nome}? L'operazione è irreversibile!
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Annulla</button>

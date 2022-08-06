@@ -8,6 +8,9 @@ import {
 
 import './App.css';
 import PrivateRoute from './components/PrivateRoute';
+import ListaCkecklistPage from './pages/checklist/ListaChecklistPage';
+import ListaVeicoliChecklistPage from './pages/checklist/ListaVeicoliChecklistPage';
+import SchedaChecklistPage from './pages/checklist/SchedaChecklistPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ListaTemplatesPage from './pages/templates/ListaTemplatesPage';
@@ -60,7 +63,7 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path="veicoli"
             element={
               <PrivateRoute>
@@ -69,7 +72,7 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path="scheda-veicolo/:id"
             element={
               <PrivateRoute>
@@ -86,7 +89,7 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path="templates"
             element={
               <PrivateRoute>
@@ -95,7 +98,7 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path="scheda-template/:id"
             element={
               <PrivateRoute>
@@ -108,6 +111,41 @@ function App() {
             element={
               <PrivateRoute>
                 <SchedaTemplatePage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="checklists"
+            element={
+              <PrivateRoute>
+                <ListaVeicoliChecklistPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="checklists/:id"
+            element={
+              <PrivateRoute>
+                <ListaCkecklistPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="scheda-checklist"
+            element={
+              <PrivateRoute>
+                <SchedaChecklistPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="scheda-checklist/:id"
+            element={
+              <PrivateRoute>
+                <SchedaChecklistPage />
               </PrivateRoute>
             }
           />
