@@ -48,12 +48,13 @@ Prima di configurare delle checklist è necessario inserire un veicolo dandogli 
 ![Schermata lista template](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/templateChecklistPage.png)
 Per ogni mezzo possono essere inseriti più template di checklist, il nome renderà facile l'identificazione. Per ogni template è possibile configurare le righe assegnando nome, descrizione e quantità
 
-### Checklit
+### Checklist
 ![Schermata checklist](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/checklistPage.png)
 Dato il mezzo è possibile visualizzare l'elenco delle checklist compilate e salvate, quelle ancora in fase di compilazione e crearne di nuove
 
 ![Schermata checklist](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/checklistDettaglioPage.png)
 Per ogni checklist e per ogni mezzo è possibile inserire delle note e confermare le informazioni. Dopo averle confermate non sarà posisbile tornare indietro
+
 ---
 
 ## Bom / Diba
@@ -83,10 +84,9 @@ Il codice da me scritto viene rilasciato con licenza [MIT]. Framework, temi e li
 [Node.Js]: <https://nodejs.org/it/>
 [Express.Js]: <https://expressjs.com/it/>
 [React]: <https://it.reactjs.org/>
-[AmCharts]: <https://www.amcharts.com/>
 [SBAdmin]: <https://startbootstrap.com/themes/sb-admin-2/>
 [Bootstrap]: <https://getbootstrap.com/>
 [FontAwesome]: <https://fontawesome.com/>
-[CC-BY-4.0]: <https://github.com/pcm-dpc/COVID-19/blob/master/LICENSE>
 [MIT]: <https://github.com/RiccardoRiggi/dashboard-covid-italia/blob/master/LICENSE>
 [Backend]: <https://github.com/RiccardoRiggi/checklist-digitale-be>
+[Sequelize]: <https://sequelize.org/>
