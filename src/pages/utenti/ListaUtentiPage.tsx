@@ -70,6 +70,7 @@ export default function ListaUtentiPage() {
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
+                                <th scope="col">Ruolo</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Cognome</th>
                                 <th scope="col">Email</th>
@@ -81,6 +82,7 @@ export default function ListaUtentiPage() {
                             {
                              Array.isArray(listaUtente) && listaUtente.map((utente: UtenteInterface, index: number) => <tr>
                                     <th key={index} scope="row">{utente.identificativo}</th>
+                                    <td>{utente.tRuoloCodice}</td>
                                     <td>{utente.nome}</td>
                                     <td>{utente.cognome}</td>
                                     <td>{utente.email}</td>

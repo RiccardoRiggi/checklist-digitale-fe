@@ -1,8 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
 
+    const utenteLoggato = useSelector((state: any) => state.utenteLoggato.utente);
+    const ruoloUtente = utenteLoggato.tRuoloCodice;
     /*
         RUOLI:
             A: AMMINISTRATORE
@@ -41,7 +44,7 @@ export default function Sidebar() {
 
 
 
-                <li className="nav-item">
+                {ruoloUtente=="A" && <li className="nav-item">
                     <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtenti"
                         aria-expanded="true" aria-controls="collapseUtenti">
                         <i className="fas fa-fw fa-users"></i>
@@ -54,9 +57,9 @@ export default function Sidebar() {
                             <Link className="collapse-item" to="/utenti">Lista utenti</Link>
                         </div>
                     </div>
-                </li>
+                </li>}
 
-                <li className="nav-item">
+                {ruoloUtente=="A" && <li className="nav-item">
                     <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVeicoli"
                         aria-expanded="true" aria-controls="collapseVeicoli">
                         <i className="fas fa-fw fa-ambulance"></i>
@@ -69,9 +72,9 @@ export default function Sidebar() {
                             <Link className="collapse-item" to="/veicoli">Lista veicoli</Link>
                         </div>
                     </div>
-                </li>
+                </li>}
 
-                <li className="nav-item">
+                {ruoloUtente=="A" && <li className="nav-item">
                     <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTemplate"
                         aria-expanded="true" aria-controls="collapseTemplate">
                         <i className="fas fa-fw fa-clipboard-list"></i>
@@ -84,7 +87,7 @@ export default function Sidebar() {
                             <Link className="collapse-item" to="/templates">Lista template</Link>
                         </div>
                     </div>
-                </li>
+                </li> }
 
           
 

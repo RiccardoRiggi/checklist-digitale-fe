@@ -1,46 +1,92 @@
-# Getting Started with Create React App
+# Checklist Digitale
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Checklist Digitale è una Web Application realizzata in Javascript che consente di gestire la compilazione e l'archiviazione delle checklist delle ambulanze.
 
-## Available Scripts
+![Home](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/homepage.png)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Database
+Il progetto si appoggia ad un database [MySql]. Nel [Backend] sono presenti i model che compongono la base dati.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Backend
+Il [backend] è realizzato utilizzando [Node.Js], [Express.Js] e [Sequelize]. L'autenticazione è gestita mediante token JWT, è inoltre presente un file YAML contenente tutti gli endpoint.
 
-### `npm test`
+##### Installazione e avvio
+```sh
+$ cd checklist-digitale-be
+$ npm install
+$ npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Frontend 
 
-### `npm run build`
+Il frontend è realizzato in [React], basato su [Bootstrap] 4 e tema [SBAdmin] 2. Dalla sidebar di sinistra è possibile selezionare una delle voci di menu per consultare le relative pagine. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### Installazione e avvio
+```sh
+$ cd checklist-digitale-fe
+$ npm install
+$ npm start
+```
+### Autenticazione e logging
+![Schermata login](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/loginPage.png)
+L'utente può accedere all'applicazione mediante email e password. Ogni login ed operazione viene registrata su opportune tavole di log.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Utenti
+![Schermata lista utenti](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/listaUtentiPage.png)
+L'applicazione offre una semplice gestione degli utenti. Bisognerà inserire nome, cognome, data di nascita, email, password e ruolo. Il ruolo utente consente solamente di creare, compilare e visionare le checklist. L'utente amministrativo non dispone di alcuna limitazione. Ogni utente può essere modificato ed eliminato.
 
-### `npm run eject`
+### Veicoli
+![Schermata lista veicoli](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/listaVeicoliPage.png)
+Prima di configurare delle checklist è necessario inserire un veicolo dandogli un nome, un tipo, una selettiva. Ogni veicolo può essere modificato ed eliminato
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Template
+![Schermata lista template](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/templateChecklistPage.png)
+Per ogni mezzo possono essere inseriti più template di checklist, il nome renderà facile l'identificazione. Per ogni template è possibile configurare le righe assegnando nome, descrizione e quantità
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Checklit
+![Schermata checklist](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/checklistPage.png)
+Dato il mezzo è possibile visualizzare l'elenco delle checklist compilate e salvate, quelle ancora in fase di compilazione e crearne di nuove
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Schermata checklist](https://raw.githubusercontent.com/RiccardoRiggi/checklist-digitale-fe/main/screenshot/checklistDettaglioPage.png)
+Per ogni checklist e per ogni mezzo è possibile inserire delle note e confermare le informazioni. Dopo averle confermate non sarà posisbile tornare indietro
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Bom / Diba
 
-## Learn More
+##### Database e recupero dei dati
+* [MySQL]
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##### Backend
+* [Node.Js]
+* [Express.Js]
+* [Sequelize]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Frontend
+* [React] 18
+* [SBAdmin] 2
+* [Bootstrap] 4
+* [FontAwesome] 5
+
+---
+
+## Licenza
+
+Il codice da me scritto viene rilasciato con licenza [MIT]. Framework, temi e librerie di terze parti mantengono le loro relative licenze. 
+
+[MySQL]: <https://www.mysql.com/it/>
+[repository ufficiale Covid-19]: <https://github.com/pcm-dpc/COVID-19>
+[Node.Js]: <https://nodejs.org/it/>
+[Express.Js]: <https://expressjs.com/it/>
+[React]: <https://it.reactjs.org/>
+[AmCharts]: <https://www.amcharts.com/>
+[SBAdmin]: <https://startbootstrap.com/themes/sb-admin-2/>
+[Bootstrap]: <https://getbootstrap.com/>
+[FontAwesome]: <https://fontawesome.com/>
+[CC-BY-4.0]: <https://github.com/pcm-dpc/COVID-19/blob/master/LICENSE>
+[MIT]: <https://github.com/RiccardoRiggi/dashboard-covid-italia/blob/master/LICENSE>
+[Backend]: <https://github.com/RiccardoRiggi/checklist-digitale-be>
